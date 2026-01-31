@@ -18,6 +18,22 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 
 });
+//new endpoint 
+//API Project: Request Header Parser Microservice
+app.get("/api/whoami", function(req,res){
+  // console.log(req.headers); 
+  // consoled to know re.headers and found accept-language under language and user-agent as software
+
+   let language = req.headers['accept-language'];
+   let software = req.headers['user-agent'].split('(')[1].split(')')[0];
+   //"software": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+   //.split('(')[1] Keeps everything inside and after the first parenthesis.
+   //split(')')[0]): Takes that result and keeps only what was before the closing parenthesis.
+   let ipaddress = req.ip;
+  res.json({ ipaddress: ipaddress, language: language, software: software});
+})
+
+
 
 
 // your first API endpoint... 
@@ -67,6 +83,8 @@ res.json({
 };
 
 });
+
+
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {

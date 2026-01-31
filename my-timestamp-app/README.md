@@ -7,3 +7,4 @@ This is the boilerplate code for the Timestamp Microservice project. Instruction
 * req.params for route parameters
 * res.json() to send JSON responses
 
+* req.headers is where the browser metadata lives.
