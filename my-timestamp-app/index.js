@@ -4,6 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
+app.set('trust proxy', true);
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -32,6 +33,7 @@ app.get("/api/whoami", function(req,res){
    let ipaddress = req.ip;
   res.json({ ipaddress: ipaddress, language: language, software: software});
 })
+
 
 
 // Listen on port set in environment variable or default to 3000
